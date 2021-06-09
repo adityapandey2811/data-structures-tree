@@ -1,2 +1,2 @@
 # data-structures-tree
-Solutions of problems related to all tree data structures
+Solutions of problems related to tree data structure
