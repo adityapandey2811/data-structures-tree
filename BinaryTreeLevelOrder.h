@@ -44,6 +44,23 @@ bt* dequeTreeNode(queueTreeNode **head){
         (*head) = NULL;
     return newnode;
 }
+void displayL(bt *root){
+    queueTreeNode *head = NULL;
+    int n;
+    if(root == NULL){
+        printf("Empty!!");
+        return;
+    }
+    head = enqueueTreeNode(head,root);
+    while(head != NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->left != NULL)
+            head = enqueueTreeNode(head, parent->left);
+        if(parent->right != NULL)
+            head = enqueueTreeNode(head, parent->right);
+        printf("%d ",parent->data);
+    }
+}
 void inorder(bt *root){
     if(root == NULL)
         return;
