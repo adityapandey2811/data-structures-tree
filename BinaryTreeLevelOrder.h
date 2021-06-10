@@ -114,6 +114,14 @@ bt* constructbt(){
     }
     return temp;
 }
+void deleteTreeR(bt **root){
+    if((*root) == NULL)
+        return;
+    deleteTreeR(&(*root)->left);
+    deleteTreeR(&(*root)->right);
+    free((*root));
+    (*root) = NULL;
+}
 void deleteTree(bt **root){
     queueTreeNode *head = NULL;
     if((*root) == NULL){
