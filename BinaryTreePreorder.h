@@ -7,6 +7,14 @@ typedef struct binarytree{
     int data;
     struct binarytree *leftchild, *rightchild;
 }bt;
+void deleteTreeR(bt **root){
+    if((*root) == NULL)
+        return;
+    deleteTreeR(&(*root)->leftchild);
+    deleteTreeR(&(*root)->rightchild);
+    free((*root));
+    (*root) = NULL;
+}
 int findTreeSize(bt *root){
     if(root == NULL)
         return 0;
