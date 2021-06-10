@@ -7,6 +7,11 @@ typedef struct binarytree{
     int data;
     struct binarytree *leftchild, *rightchild;
 }bt;
+int findTreeSize(bt *root){
+    if(root == NULL)
+        return 0;
+    else return(findTreeSize(root->leftchild)+findTreeSize(root->rightchild)+1);
+}
 void inorder(bt *root){
     if(root == NULL)
         return;
