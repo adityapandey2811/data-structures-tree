@@ -92,5 +92,34 @@ bt* constructbt(){
     }
     return temp;
 }
+bt *insertInTree(bt *root, int n){
+    queueTreeNode *head = NULL;
+    bt *temp = NULL;
+    temp = (bt*)malloc(sizeof(bt));
+    temp->data = n;
+    temp->left = temp->right = NULL;
+    if(root == NULL){
+        root = temp;
+        return root;
+    }
+    head = enqueueTreeNode(head,root);
+    while(head!=NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->left == NULL){
+            parent->left = temp;
+            return root;
+        }
+        else{
+            head = enqueueTreeNode(head,parent->left);
+        }
+        if(parent->right == NULL){
+            parent->right = temp;
+            return root;
+        }
+        else{
+            head = enqueueTreeNode(head,parent->right);
+        }
+    }
+}
 
 #endif
