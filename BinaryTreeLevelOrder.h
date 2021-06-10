@@ -14,6 +14,11 @@ typedef struct qm{
 typedef struct qtn{
     queueMaker *front,*rear;
 }queueTreeNode;
+int findTreeSize(bt *root){
+    if(root == NULL)
+        return 0;
+    else return(findTreeSize(root->left)+findTreeSize(root->right)+1);
+}
 queueTreeNode* enqueueTreeNode(queueTreeNode *head, bt *n){
     queueMaker *temp = NULL;
     temp = (queueMaker*)malloc(sizeof(queueMaker));
