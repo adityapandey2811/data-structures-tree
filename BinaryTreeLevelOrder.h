@@ -14,6 +14,19 @@ typedef struct qm{
 typedef struct qtn{
     queueMaker *front,*rear;
 }queueTreeNode;
+int depth(bt *root){
+    int l,r;
+    if(root == NULL)
+        return 0;
+    else{
+        l = depth(root->left);
+        r = depth(root->right);
+    }
+    if(l>r)
+        return l+1;
+    else
+        return r+1;
+}
 int findTreeSize(bt *root){
     if(root == NULL)
         return 0;
