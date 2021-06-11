@@ -7,6 +7,19 @@ typedef struct binarytree{
     int data;
     struct binarytree *leftchild, *rightchild;
 }bt;
+int depth(bt *root){
+    int l,r;
+    if(root == NULL)
+        return 0;
+    else{
+        l = depth(root->left);
+        r = depth(root->right);
+    }
+    if(l>r)
+        return l+1;
+    else
+        return r+1;
+}
 void deleteTreeR(bt **root){
     if((*root) == NULL)
         return;
