@@ -27,6 +27,53 @@ int depth(bt *root){
     else
         return r+1;
 }
+int searchInTree(bt *root, int n){
+    int i;
+    if(root == NULL)
+        return 0;
+    else if(root->data == n)
+        return 1;
+    i = searchInTree(root->left,n);
+    if(i!=1)
+        i = searchInTree(root->right,n);
+    if(i==1)
+        return 1;
+    return 0;
+}
+bt* getTreeNode(bt *root, int n){
+    queueTreeNode *head = NULL;
+    if(root == NULL)
+        return 0;
+    head = enqueueTreeNode(head,root);
+    while(head != NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->data == n)
+            return parent;
+        else{
+            if(parent->left != NULL)
+                head = enqueueTreeNode(head,parent->left);
+            if(parent->right != NULL)
+                head = enqueueTreeNode(head,parent->right);
+        }
+    }
+    return NULL;
+}
+bt* deepestTreeNode(bt *root){
+    queueTreeNode *head = NULL;
+    bt *temp = NULL;
+    if(root == NULL)
+        return 0;
+    head = enqueueTreeNode(head,root);
+    while(head!=NULL){
+        bt *parent = dequeTreeNode(&head);
+        temp = parent;
+        if(parent->left)
+            head = enqueueTreeNode(head,parent->left);
+        if(parent->right)
+            head = enqueueTreeNode(head,parent->right);
+    }
+    return temp;
+}
 int findTreeSize(bt *root){
     if(root == NULL)
         return 0;
