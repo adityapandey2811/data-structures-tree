@@ -32,6 +32,14 @@ int findTreeSize(bt *root){
         return 0;
     else return(findTreeSize(root->left)+findTreeSize(root->right)+1);
 }
+int queueSize(queueTreeNode *q){
+    queueMaker *temp;
+    int i = 0;
+    if(q == NULL)
+        return 0;
+    for(temp = q->front;temp != NULL; temp = temp->next, i++);
+    return i;
+}
 queueTreeNode* enqueueTreeNode(queueTreeNode *head, bt *n){
     queueMaker *temp = NULL;
     temp = (queueMaker*)malloc(sizeof(queueMaker));
