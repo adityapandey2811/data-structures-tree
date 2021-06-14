@@ -78,6 +78,28 @@ bt* dequeTreeNode(queueTreeNode **head){
         (*head) = NULL;
     return newnode;
 }
+bt* getTreeNodeParent(bt *root, int n){
+    queueTreeNode *head = NULL;
+    if(root == NULL)
+        return 0;
+    head = enqueueTreeNode(head,root);
+    while(head != NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->left != NULL){
+            if(parent->left->data == n)
+                return parent;
+            else
+                head = enqueueTreeNode(head,parent->left);
+        }
+        if(parent->right != NULL){
+            if(parent->right->data == n)
+                return parent;
+            else
+                head = enqueueTreeNode(head,parent->right);
+        }
+    }
+    return NULL;
+}
 bt* getTreeNode(bt *root, int n){
     queueTreeNode *head = NULL;
     if(root == NULL)
