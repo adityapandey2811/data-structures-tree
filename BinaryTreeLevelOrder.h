@@ -40,40 +40,6 @@ int searchInTree(bt *root, int n){
         return 1;
     return 0;
 }
-bt* getTreeNode(bt *root, int n){
-    queueTreeNode *head = NULL;
-    if(root == NULL)
-        return 0;
-    head = enqueueTreeNode(head,root);
-    while(head != NULL){
-        bt *parent = dequeTreeNode(&head);
-        if(parent->data == n)
-            return parent;
-        else{
-            if(parent->left != NULL)
-                head = enqueueTreeNode(head,parent->left);
-            if(parent->right != NULL)
-                head = enqueueTreeNode(head,parent->right);
-        }
-    }
-    return NULL;
-}
-bt* deepestTreeNode(bt *root){
-    queueTreeNode *head = NULL;
-    bt *temp = NULL;
-    if(root == NULL)
-        return 0;
-    head = enqueueTreeNode(head,root);
-    while(head!=NULL){
-        bt *parent = dequeTreeNode(&head);
-        temp = parent;
-        if(parent->left)
-            head = enqueueTreeNode(head,parent->left);
-        if(parent->right)
-            head = enqueueTreeNode(head,parent->right);
-    }
-    return temp;
-}
 int findTreeSize(bt *root){
     if(root == NULL)
         return 0;
@@ -112,6 +78,41 @@ bt* dequeTreeNode(queueTreeNode **head){
         (*head) = NULL;
     return newnode;
 }
+bt* getTreeNode(bt *root, int n){
+    queueTreeNode *head = NULL;
+    if(root == NULL)
+        return 0;
+    head = enqueueTreeNode(head,root);
+    while(head != NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->data == n)
+            return parent;
+        else{
+            if(parent->left != NULL)
+                head = enqueueTreeNode(head,parent->left);
+            if(parent->right != NULL)
+                head = enqueueTreeNode(head,parent->right);
+        }
+    }
+    return NULL;
+}
+bt* deepestTreeNode(bt *root){
+    queueTreeNode *head = NULL;
+    bt *temp = NULL;
+    if(root == NULL)
+        return 0;
+    head = enqueueTreeNode(head,root);
+    while(head!=NULL){
+        bt *parent = dequeTreeNode(&head);
+        temp = parent;
+        if(parent->left)
+            head = enqueueTreeNode(head,parent->left);
+        if(parent->right)
+            head = enqueueTreeNode(head,parent->right);
+    }
+    return temp;
+}
+
 void displayL(bt *root){
     queueTreeNode *head = NULL;
     int n;
