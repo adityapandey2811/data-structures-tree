@@ -1,6 +1,6 @@
 #ifndef bt_h
 #define bt_h
-
+//The Antitlia look alike code by Aditya Pandey
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct binary{
