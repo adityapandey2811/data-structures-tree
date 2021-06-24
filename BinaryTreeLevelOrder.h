@@ -1,10 +1,11 @@
 #ifndef bt_h
 #define bt_h
-//The Antitlia look alike code by Aditya Pandey
+//The Antilia look alike code by Aditya Pandey
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct binary{
     int data;
+    char val;
     struct binary *left,*right;
 }bt;
 typedef struct qm{
@@ -173,6 +174,46 @@ void postorder(bt *root){
     postorder(root->right);
     printf("%d ",root->data);
 }
+//Character Display
+void displayLc(bt *root){
+    queueTreeNode *head = NULL;
+    int n;
+    if(root == NULL){
+        printf("Empty!!!");
+        return;
+    }
+    head = enqueueTreeNode(head,root);
+    while(head != NULL){
+        bt *parent = dequeTreeNode(&head);
+        if(parent->left != NULL)
+            head = enqueueTreeNode(head, parent->left);
+        if(parent->right != NULL)
+            head = enqueueTreeNode(head, parent->right);
+        printf("%c ",parent->val);
+    }
+}
+void inorderc(bt *root){
+    if(root == NULL)
+        return;
+    inorderc(root->left);
+    printf("%c ",root->val);
+    inorderc(root->right);
+}
+void preorderc(bt *root){
+    if(root == NULL)
+        return;
+    printf("%c ",root->val);
+    preorderc(root->left);
+    preorderc(root->right);
+}
+void postorderc(bt *root){
+    if(root == NULL)
+        return;
+    postorderc(root->left);
+    postorderc(root->right);
+    printf("%c ",root->val);
+}
+//Character Display
 bt* constructbt(){
     bt *temp = NULL;
     queueTreeNode *head = NULL;
