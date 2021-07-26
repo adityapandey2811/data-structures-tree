@@ -6,7 +6,7 @@ typedef struct genericTree{
 
 //Calculation of number of siblings
 int noOfSiblings(gentre *root){
-    int i = 0,j,k,n;
+    int i = 0;
     while(root != NULL){
         root = root->nextSibling;
         i++;
