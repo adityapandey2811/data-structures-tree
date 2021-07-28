@@ -3,7 +3,7 @@
 typedef struct binary{
     int data;
     char val;
-    struct binary *left,*right,*preorderSuccessor;
+    struct binary *left,*right,*inorderSuccessor;
 }bt;
 typedef struct qm{
     bt *treenode;
@@ -81,7 +81,7 @@ bt* findInorderSuccessor(bt *root, bt **prev){
     if(root == NULL)
         return NULL;
     findInorderSuccessor(root->left,prev);
-    root->preorderSuccessor = *prev;
+    root->inorderSuccessor = *prev;
     (*prev) = root;
     findInorderSuccessor(root->right,prev);
     return root;
@@ -97,17 +97,17 @@ void displayInorderSuccessor(bt *root){
     if(root == NULL)
         return;
     displayInorderSuccessor(root->left);
-    if(root->preorderSuccessor != NULL)
-        printf("%d ",root->preorderSuccessor->data);
+    if(root->inorderSuccessor != NULL)
+        printf("%d ",root->inorderSuccessor->data);
     else
         printf("NULL ");
     displayInorderSuccessor(root->right);
 }
 int main(){
     bt *root = constructbt(),*temp = NULL;
-    root = findPreorderSuccessor(root,&temp);
+    root = findInorderSuccessor(root,&temp);
     display(root);
     printf("\n");
-    displayPreorderSuccessor(root);
+    displayInorderSuccessor(root);
     return 0;
 }
