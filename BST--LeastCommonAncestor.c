@@ -1,3 +1,4 @@
+//LCA can also be used to find shortest path between 2 nodes
 #include<stdio.h>
 #include<stdlib.h>
 #include"btl.h"
