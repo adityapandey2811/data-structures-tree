@@ -1,4 +1,4 @@
-//Optimized approach to check BST
+//Optimized approach to check BST but its wrong since it only checks current node(This will give wrong output : 6 2 8 1 9 -1 -1 -1 -1 -1 -1)!
 #include<stdio.h>
 #include<stdlib.h>
 #include"btl.h"
