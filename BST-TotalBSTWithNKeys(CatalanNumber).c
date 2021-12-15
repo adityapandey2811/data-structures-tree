@@ -1,4 +1,4 @@
-//Structurally Unique BST with n keys using CATALAN NUMBER [2nCn/n+1]
+//Structurally Unique BST with n keys using CATALAN NUMBER [2nCn/n+1] or (2n)!/((n+1)!*n!)
 #include<stdio.h>
 #include<stdlib.h>
 #include"btl.h"
