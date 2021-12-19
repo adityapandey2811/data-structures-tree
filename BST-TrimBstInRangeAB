@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"btl.h"
+bt* trimBST(bt *root, int i, int j){
+	bt *temp = root;
+	if(!root)
+		return root;
+	
+	temp->left = trimBST(root->left,i,j);
+	temp->right = trimBST(root->right,i,j);
+	if(i <= root->data && j >= root->data)
+		return temp;
+	else if(temp->right && (temp->right->data >= i && temp->right->data <= j))
+		return temp->right;
+	else if(temp->left && (temp->left->data >= i && temp->left->data <= j))
+		return temp->left;
+	return NULL;
+}
+int main(){
+	int i = 2, j = 5;
+	bt *root = constructbt();
+	root = trimBST(root,i,j);
+	printf("\n");
+	inorder(root);
+	printf("\n");
+	preorder(root);
+	printf("\n");
+	postorder(root);
+	return 0;
+}
