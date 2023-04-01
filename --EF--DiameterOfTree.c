@@ -1,3 +1,20 @@
+//My new way
+int diameter(TreeNode *root, int *res){
+    int l,r, ans;
+    if(!root) return 0;
+    else{
+        l = diameter(root->left,res);
+        r = diameter(root->right,res);
+    }
+    *res = max(l+r+1, *res);
+    if(l>r){
+        return l+1;
+    } else {
+        return r+1;
+    }
+}
+
+//My old way
 #include<stdio.h>
 #include<stdlib.h>
 #include"btl.h"
