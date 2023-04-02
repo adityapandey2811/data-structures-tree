@@ -13,6 +13,11 @@ int diameter(TreeNode *root, int *res){
         return r+1;
     }
 }
+int diameterOfBinaryTree(TreeNode* root) {
+    int res = 0;
+    diameter(root, &res);
+    return res-1;
+}
 
 //My old way
 #include<stdio.h>
